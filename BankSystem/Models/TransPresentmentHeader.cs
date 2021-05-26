@@ -23,9 +23,9 @@ namespace BankSystem.Models
 
         public TransPresentmentHeader(params object[] data)
         {
-            TransHeadId = Convert.ToInt32( data[0]);
+            TransHeadId = Convert.ToInt32(data[0]);
             FileNo = data[1].ToString();
-            Date = Convert.ToDateTime( data[2]);
+            Date = Convert.ToDateTime(data[2]);
             BankName = data[3].ToString();
             IsActive = Convert.ToBoolean(data[4]);
             IsDeleted =Convert.ToBoolean( data[5]);

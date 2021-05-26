@@ -24,8 +24,10 @@ namespace BankSystem.Controllers
 
         public IHttpActionResult GetTransectionHeader()
         {
-            SqlCommand cmd = new SqlCommand("USP_Get_transpresentmentHeader", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("USP_Get_transpresentmentHeader", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             List<TransPresentmentHeader> presentmentHeaders = new List<TransPresentmentHeader>();
             con.Open();
             var reader = cmd.ExecuteReader();
@@ -54,20 +56,24 @@ namespace BankSystem.Controllers
             {
                 return BadRequest();
             }
-            
 
-            SqlCommand cmd = new SqlCommand("USP_Get_Rows_tbltranspresentmentHeader", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlCommand cmd = new SqlCommand("USP_Get_Rows_tbltranspresentmentHeader", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             con.Open();
             var rows=cmd.ExecuteReader();
             rows.Read();
-            string FileNo = "ACH-DR-KKBK-HERONACH-" + String.Format("{0:ddMMMyyyy}", DateTime.Now) + Convert.ToInt64(rows[0]) + "-INP";
+            string FileNo = "ACH-DR-KKBK-HERONACH-" + String.Format("{0:ddMMMyyyy}", DateTime.Now) +"-0000000" +(Convert.ToInt64(rows[0])+1) + "-INP";
 
             cmd.Dispose();
             con.Close();
             con.Open();
-            cmd = new SqlCommand("USP_Create_transpresentmentHeader", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd = new SqlCommand("USP_Create_transpresentmentHeader", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
 
 
             cmd.Parameters.AddWithValue("@FileNo",FileNo);
