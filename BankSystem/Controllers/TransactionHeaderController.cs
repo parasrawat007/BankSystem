@@ -58,31 +58,44 @@ namespace BankSystem.Controllers
             }
 
 
-            SqlCommand cmd = new SqlCommand("USP_Get_Rows_tbltranspresentmentHeader", con)
+            //SqlCommand cmd = new SqlCommand("USP_Get_Rows_tbltranspresentmentHeader", con)
+            //{
+            //    CommandType = CommandType.StoredProcedure
+            //};
+            //con.Open();
+            //var rows=cmd.ExecuteReader();
+            //rows.Read();
+            //string FileNo = "ACH-DR-KKBK-HERONACH-" + String.Format("{0:ddMMMyyyy}", DateTime.Now) +"-0000000" +(Convert.ToInt64(rows[0])+1) + "-INP";
+
+            //cmd.Dispose();
+            //con.Close();
+            //con.Open();
+            //cmd = new SqlCommand("USP_Create_transpresentmentHeader", con)
+            //{
+            //    CommandType = CommandType.StoredProcedure
+            //};
+
+
+            //cmd.Parameters.AddWithValue("@FileNo",FileNo);
+            //cmd.Parameters.AddWithValue("@Date", presentmentHeader.Date);
+            //cmd.Parameters.AddWithValue("@BankName", presentmentHeader.BankName);
+            //cmd.Parameters.AddWithValue("@IsActive", presentmentHeader.IsActive);
+            //cmd.Parameters.AddWithValue("@IsDeleted", presentmentHeader.IsDeleted);
+            //cmd.Parameters.AddWithValue("@PresentmentHeaderNo", presentmentHeader.PresentmentHeaderNo);
+
+            //cmd.ExecuteNonQuery();
+
+            //con.Close();
+            SqlCommand cmd = new SqlCommand("USP_Create_transpresentmentHeader", con)
             {
                 CommandType = CommandType.StoredProcedure
             };
             con.Open();
-            var rows=cmd.ExecuteReader();
-            rows.Read();
-            string FileNo = "ACH-DR-KKBK-HERONACH-" + String.Format("{0:ddMMMyyyy}", DateTime.Now) +"-0000000" +(Convert.ToInt64(rows[0])+1) + "-INP";
-
-            cmd.Dispose();
-            con.Close();
-            con.Open();
-            cmd = new SqlCommand("USP_Create_transpresentmentHeader", con)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-
-            cmd.Parameters.AddWithValue("@FileNo",FileNo);
             cmd.Parameters.AddWithValue("@Date", presentmentHeader.Date);
             cmd.Parameters.AddWithValue("@BankName", presentmentHeader.BankName);
             cmd.Parameters.AddWithValue("@IsActive", presentmentHeader.IsActive);
             cmd.Parameters.AddWithValue("@IsDeleted", presentmentHeader.IsDeleted);
             cmd.Parameters.AddWithValue("@PresentmentHeaderNo", presentmentHeader.PresentmentHeaderNo);
-
             cmd.ExecuteNonQuery();
 
             con.Close();

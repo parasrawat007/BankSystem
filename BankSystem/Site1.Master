@@ -17,7 +17,7 @@
    
     
      <script src="Scripts/DataTables/jquery.dataTables.js"></script>
-     <script src="Scripts/DataTables/dataTables.bootstrap.js"></script>
+     <script src="Scripts/DataTables/dataTables.bootstrap4.js"></script>
      <script src="Scripts/DataTables/dataTables.select.js"></script>
      <script src="Scripts/Main.js"></script>
 </head>

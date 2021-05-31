@@ -3,7 +3,7 @@
 
      <main>
 
-        <form class="container mt-5 col-md-4">
+        <div class="container mt-5 col-md-4">
 
             <div class="mb-3">
                 <label for="PresentmentHeaderNo" class="form-label">Presentment Header No</label>
@@ -17,7 +17,7 @@
 
             <div class="mb-3">
                 <label for="Date" class="form-label">Date</label>
-                <input type="text" class="form-control" id="Date">
+                <input type="date" class="form-control" id="Date">
             </div>
 
             <div class="mb-3">
@@ -37,7 +37,8 @@
             <div class="text-center">
                 <button class="btn btn-success" id="Submit">Submit</button>
             </div>
-        </form>
+           
+        </div>
         
     </main>
 

@@ -29,29 +29,35 @@
                 data: "createdOn"
             },
             {
-                data: "presentmentHeaderNo"
+                data: "presentmentHeaderNo",
+                render: function (data) {
+                    return "<a href='#'>" + data + " </a>";
+                }
             }
-        ] 
+        ]
     });
 
-    $("#Submit").on("click",null,function () {
+    $("#Submit").click(function(){
+        var data = {
+            date: $("#Date").val(),
+            bankName: $("#BankName").val(),
+            isActive: $("#IsActive").prop("checked"),
+            isDeleted: $("#IsDeleted").prop("checked"),
+            presentmentHeaderNo: $("#PresentmentHeaderNo").val()
+        };
+
         $.ajax({
             url: "/api/TransactionHeader/",
-            contentType: "application/json",
             method: "POST",
-            data: JSON.stringify({
-                date: $("#Date").val(),
-                bankName: $("#BankName").val(),
-                isActive: $("#IsActive").prop("checked"),
-                isDeleted: $("#IsDeleted").prop("checked"),
-                presentmentHeaderNo: $("#PresentmentHeaderNo").val()
-            }),
-            dataType:"json",
-            success: function (result) {
-                bootbox.alert("Data Saved Successfully");
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function () {
+                bootbox.alert("Working", function () {
+                    window.location.assign("/WebForm1.aspx");
+                });
             },
-            error: function (result) {
-                bootbox.alert("Data Saved Successfully");
+            error: function () {
+                bootbox.alert("Error Ocurred");
             }
         });
     });
